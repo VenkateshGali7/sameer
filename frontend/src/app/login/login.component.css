@@ -1,0 +1,14 @@
+/* Error message styling */
+.error {
+    color: #ff4d4f;
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+  
+  /* Highlight invalid field */
+  .invalid-field {
+    border: 2px solid #ff4d4f;
+    background-color: #ffe6e6;
+  }
+  
+  

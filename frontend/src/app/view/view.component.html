@@ -1,0 +1,26 @@
+<div class="view-container">
+  <h1>Your Reward Points</h1>
+  <div class="reward-card">
+    <h2>{{ rewardPoints }}</h2>
+    <p>Total Points Earned</p>
+  </div>
+
+  <h3>Transaction History</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Transaction</th>
+        <th>Points Earned</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of transactions">
+        <td>{{ transaction.rewardDate | date:'shortDate' }}</td>
+        <td>{{ transaction.rewardAmount }}</td>
+        <td>{{ transaction.rewardPoints }}</td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>

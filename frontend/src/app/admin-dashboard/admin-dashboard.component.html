@@ -1,0 +1,55 @@
+<div class="dashboard-container">
+    <header class="dashboard-header">
+        <div class="dashboard-header-flex-container">
+            <h1>Admin Dashboard</h1>
+            <div (click)="logout()">
+                <button class="admin-logout-button">Logout</button>
+            </div>
+        </div>
+    </header>
+  
+    <main class="dashboard-content">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">User Management</h2>
+        </div>
+        <div class="card-body">
+          <div class="accordion">
+            <div class="accordion-item" *ngFor="let user of users">
+              <div class="accordion-header" (click)="toggleAccordion(user.id)">
+                <div class="user-info">
+                  <span class="user-email">{{ user.phoneNumber }}</span>
+                  <span class="transaction-badge">{{ user.transactions.length }} Transactions</span>
+                </div>
+              </div>
+              
+              <div class="accordion-content" [ngClass]="{'expanded': expandedUsers[user.id]}">
+                <div class="table-container">
+                  <table class="transaction-table">
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Transaction ID</th>
+                        <th>Amount</th>
+                        <th class="product-column">Product</th>
+                        <th>Points</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let transaction of user.transactions">
+                        <td>{{ formatDate(transaction.date) }}</td>
+                        <td class="transaction-id">{{ transaction.id }}</td>
+                        <td>{{ formatCurrency(transaction.amount) }}</td>
+                        <td class="product-column">{{ transaction.product }}</td>
+                        <td><span class="points-badge">{{ transaction.points }} pts</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>

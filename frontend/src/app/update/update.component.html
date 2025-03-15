@@ -1,0 +1,51 @@
+<div class="update-container">
+  <h1>Update Transaction</h1>
+
+  <!-- Date Field -->
+  <div class="form-group">
+    <label for="date">Date</label>
+    <input
+      type="date"
+      id="date"
+      class="form-control"
+      [(ngModel)]="formData.date"
+    />
+  </div>
+
+  <!-- Amount Field -->
+  <div class="form-group">
+    <label for="amount">Amount</label>
+    <input
+      type="number"
+      id="amount"
+      class="form-control"
+      [(ngModel)]="formData.amount"
+      min="1"
+    />
+  </div>
+
+  <!-- Product Dropdown -->
+  <div class="form-group">
+    <label for="product">Product</label>
+    <select id="product" class="form-control" [(ngModel)]="formData.product">
+      <option value="" disabled>Select a product</option>
+      <option *ngFor="let item of productOptions" [value]="item">
+        {{ item }}
+      </option>
+    </select>
+  </div>
+
+  <!-- Transaction ID Field -->
+  <div class="form-group">
+    <label for="transactionId">Transaction ID</label>
+    <input
+      type="text"
+      id="transactionId"
+      class="form-control"
+      [(ngModel)]="formData.transactionId"
+    />
+  </div>
+
+  <!-- Submit Button -->
+  <button (click)="onSubmit()" class="btn btn-primary">Submit</button>
+</div>

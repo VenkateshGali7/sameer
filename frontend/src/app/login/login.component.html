@@ -1,0 +1,78 @@
+<div class="login-container">
+  <form (ngSubmit)="otpSent ? verifyOtp() : sendOtp()" #loginForm="ngForm">
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number</label>
+      <input
+        type="text"
+        id="phoneNumber"
+        name="phoneNumber"
+        [(ngModel)]="phoneNumber"
+        required
+        #phone="ngModel"
+        pattern="^[789]\d{9}$"
+        placeholder="Enter your 10-digit phone number"
+        maxlength="10"
+        (keypress)="validateNumericInput($event)"
+        (input)="validatePhoneNumber()"
+        [ngClass]="{'invalid-field': !isPhoneNumberValid && phone.touched}"
+      />
+      <div *ngIf="!isPhoneNumberValid && phone.touched" class="error">
+        Please enter a valid 10-digit Indian phone number starting with 7, 8, or 9.
+      </div>
+    </div>
+
+    <div *ngIf="otpSent" class="form-group">
+      <label for="otp">OTP</label>
+      <input
+        type="text"
+        id="otp"
+        name="otp"
+        [(ngModel)]="otp"
+        required
+        #otpModel="ngModel"
+        maxlength="6"
+      />
+      <div *ngIf="otpModel.invalid && otpModel.touched" class="error">
+        OTP is required.
+      </div>
+
+      <!-- Error toggle for invalid OTP -->
+      <div *ngIf="invalidOtp" class="error">
+        Invalid OTP. Please try again.
+      </div>
+    </div>
+
+    <div *ngIf="user" class="form-group">
+      <label for="dob">Date of Birth</label>
+      <input
+        type="date"
+        id="dob"
+        name="dob"
+        [(ngModel)]="dob"
+        required
+        #dobModel="ngModel"
+      />
+      
+      <!-- Validation messages -->
+      <div *ngIf="dobModel.invalid && dobModel.touched" class="error">
+        Date of Birth is required.
+      </div>
+    
+      <!-- Optional: Custom validation -->
+      <div *ngIf="dobInvalid" class="error">
+        Invalid Date of Birth. Please check the date.
+      </div>
+    </div>
+    
+
+    <button
+      type="submit"
+      class="btn"
+      [disabled]="!loginForm.valid || (otpSent && !otp)"
+    >
+      {{ otpSent ? 'Verify OTP' : 'Send OTP' }}
+    </button>
+  </form>
+
+  <p *ngIf="message">{{ message }}</p>
+</div>

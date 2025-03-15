@@ -1,0 +1,122 @@
+/* Container styling */
+.view-container {
+  padding: 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+/* Reward Points Card */
+.reward-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ff8a00, #ff512f); /* Gradient background */
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add a shadow for a 3D effect */
+  margin-bottom: 30px;
+  max-width: 300px;
+  margin: 0 auto; /* Center the card */
+}
+
+.reward-card h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 0;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3); /* Add a subtle text shadow */
+}
+
+.reward-card p {
+  font-size: 1.2rem;
+  margin: 10px 0 0;
+  opacity: 0.9;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+table th {
+  background-color: #007bff;
+  color: white;
+  text-align: left;
+}
+
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table tr:hover {
+  background-color: #ddd;
+}
+
+/* Responsive styling for medium screens (tablets) */
+@media (max-width: 768px) {
+  .reward-card {
+    padding: 20px;
+  }
+
+  .reward-card h2 {
+    font-size: 2.5rem;
+  }
+
+  .reward-card p {
+    font-size: 1rem;
+  }
+
+  table th,
+  table td {
+    font-size: 0.9rem;
+  }
+}
+
+/* Responsive styling for smaller screens (mobile devices) */
+@media (max-width: 576px) {
+  .reward-card {
+    padding: 15px;
+    max-width: 90%; /* Allow the card to take more width on smaller screens */
+  }
+
+  .reward-card h2 {
+    font-size: 2rem;
+  }
+
+  .reward-card p {
+    font-size: 0.9rem;
+  }
+
+  table {
+    font-size: 0.8rem; /* Reduce the font size for tables */
+    margin-top: 15px;
+  }
+
+  table th,
+  table td {
+    padding: 8px; /* Reduce padding for better fit */
+  }
+
+  table th {
+    font-size: 1rem; /* Adjust header font size */
+  }
+
+  table td {
+    font-size: 0.9rem; /* Adjust data font size */
+  }
+
+  /* Make the table scrollable horizontally */
+  .view-container {
+    overflow-x: auto; /* Add horizontal scrolling for smaller screens */
+  }
+}
